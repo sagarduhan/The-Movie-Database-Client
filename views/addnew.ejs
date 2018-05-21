@@ -1,0 +1,84 @@
+<link href="style.css" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.11/css/all.css" integrity="sha384-p2jx59pefphTFIpeqCcISO9MdVfIm4pNnsL08A6v5vaQc4owkQqxMV8kg4Yvhaw/" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+<meta name="viewport" content="width=device-width">
+
+
+
+
+<div class="searchBody">
+        <div class="realHeading">
+                <a href="/"><img src="https://www.themoviedb.org/static_cache/v4/logos/primary-green-d70eebe18a5eb5b166d5c1ef0796715b8d1a2cbc698f96d311d62f894ae87085.svg" class="tmdbLogo">
+                    <!-- <p class="logoHeading">The movie database</p> -->
+                    The movie database</a>
+            </div>
+
+
+        <form action="/results" method="GET">
+            <input type="text" placeholder="Search for a movie..." name="search" id="searchBar" autocomplete="off">
+            <!-- <input type="submit" value="Search" class="buttons"> -->
+        </form>
+        
+        <div class="underSearch">
+
+            
+            <div class="searchTitle">
+                latest hits
+            </div>
+            
+
+            <div class="thumbnailSlide" >
+              <!-- Flickity HTML init -->
+              <div class="carousel" data-flickity='{ "groupCells": 2,"freeScroll": true, "wrapAround": true, "autoPlay": 1500 }'>
+                    <%for(i=0;i<10;i++){ %>
+                            <div class="carousel-cell">
+                                    <% var thumnail = "" %>
+                                    <% var thumbnail = nowPlaying ["results"][i]["poster_path"] %>
+                                    <% thumbnailUrl= "http://image.tmdb.org/t/p/w500"+ thumbnail %>
+                                    <% var titleUrl= nowPlaying ["results"][i]["title"] %>
+                                    
+                                    <form action="/results" method="GET">
+                                        <input type="image" name="search" src="<%= thumbnailUrl %>" class="thumbnailImage">
+                                        <input type="hidden" placeholder="" name="search" value="<%= titleUrl %>">
+                                    </form>
+                                    <!-- <img src="<%= thumbnailUrl %>" alt="" class="thumbnailImage"> -->
+                            </div>
+                    <%} %>
+              </div>        
+            </div>
+        
+        
+        
+            <div class="searchTitle">
+            popular movies
+            </div>
+        
+        
+            <div class="popularThumbnail">
+                    <!-- <% var popularPage = (popular ["results"][0]["title"]).length %> -->
+        
+        
+        <%for(i=0;i<20;i++){ %>
+                                    <% var thumnail = "" %>
+                                    <% var thumbnail = nowPlaying ["results"][i]["poster_path"] %>
+                                    <% thumbnailUrl= "http://image.tmdb.org/t/p/w500"+ thumbnail %>
+                                    <% var titleUrl= nowPlaying ["results"][i]["title"] %>
+                                    
+                                    <form action="/results" method="GET">
+                                        <input type="image" name="search" src="<%= thumbnailUrl %>" class="thumbnailImage">
+                                        <input type="hidden" placeholder="" name="search" value="<%= titleUrl %>">
+                                    </form>
+                                    <!-- <img src="<%= thumbnailUrl %>" alt="" class="thumbnailImage"> -->
+                    <%} %>
+        
+            </div>
+            
+            
+            
+        
+        </div>
+        
+</div>
+

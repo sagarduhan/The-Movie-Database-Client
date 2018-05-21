@@ -1,0 +1,70 @@
+
+<!-- <script type="text/javascript" src="script.js"></script> -->
+<!-- <link rel="stylesheet" type="text/css" href="/Users/Sagar/Desktop/project/MOVIE/style.css"> -->
+<link href="style.css" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.11/css/all.css" integrity="sha384-p2jx59pefphTFIpeqCcISO9MdVfIm4pNnsL08A6v5vaQc4owkQqxMV8kg4Yvhaw/" crossorigin="anonymous">
+
+<div class="overlay">
+        <div class="realHeading">
+            <a href="/"><img src="https://www.themoviedb.org/static_cache/v4/logos/primary-green-d70eebe18a5eb5b166d5c1ef0796715b8d1a2cbc698f96d311d62f894ae87085.svg" class="tmdbLogo">
+                <!-- <p class="logoHeading">The movie database</p> -->
+                The movie database</a>
+                
+                </div>
+
+<div class="searchResult">
+
+    <div class="posters" >
+        <% var poster = "" %>
+        <% var poster = data ["results"][0]["poster_path"] %>
+        <% posterUrl= "http://image.tmdb.org/t/p/w500"+ poster %>
+        <img src="<%= posterUrl %>" alt="" class="posterImage">
+    </div>
+    <div class="written" >
+        <div class="titles">
+            <%= data ["results"][0]["title"] %>
+        </div>
+        
+        
+        <div class="ratings">
+                <i class="fas fa-star"></i>
+                <%= data ["results"][0]["vote_average"] %>
+                &nbsp;&nbsp;
+                <i class="far fa-calendar-alt"></i>
+                <%= data ["results"][0]["release_date"] %>
+        </div>
+    
+    
+        <div class="overviews">
+            <%= data ["results"][0]["overview"] %>
+        </div>
+        <div class="trailers">
+                <%var movieid= data ["results"][0]["id"] %>
+                <% var trailerKey = "" %>
+                <%var trailerKey= trailer ["results"][0]["key"] %>
+                <% trailurl= "https://www.youtube.com/embed/"+ trailerKey %>
+                <iframe frameBorder="0" width="640" height="360"
+                    src="<%= trailurl %>">
+                </iframe>
+
+
+        </div>
+    </div>
+    
+    
+    
+    
+
+</div>
+</div>
+
+<div class ="backs">
+        <% var back = "" %>
+        <% var back = data ["results"][0]["backdrop_path"] %>
+        <% backUrl= "http://image.tmdb.org/t/p/original"+ back %>
+        <img src="<%= backUrl %>" alt="" class="backImage">
+</div>
+
+
+<!-- http://image.tmdb.org/t/p/original//nBNZadXqJSdt05SHLqgT0HuC5Gm.jpg -->
